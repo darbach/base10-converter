@@ -20,6 +20,10 @@ class Base10ConverterTest {
       {36, 36},
       {0, 21},
       {-1, 2},
+      {Integer.MAX_VALUE, 2},
+      {Integer.MAX_VALUE, 8},
+      {Integer.MAX_VALUE, 16},
+      {Integer.MAX_VALUE, 36},
       {1059254948, 36}
   };
 
@@ -34,6 +38,10 @@ class Base10ConverterTest {
       "10",
       "0",
       "-1",
+      "1111111111111111111111111111111",
+      "17777777777",
+      "7FFFFFFF",
+      "ZIK0ZJ",
       "HINICK"
   };
 
