@@ -25,7 +25,7 @@ public class Base10Converter {
    *   5. Return s.
    * @param value Any integer in base 10.
    * @param base A numeric base from 2 to 36.
-   * @throws IllegalArgumentException If base is less outside the range 2 to 36 inclusive.
+   * @throws IllegalArgumentException If base is outside the range 2 to 36 inclusive.
    * @return A string in the specified base.
    */
   public String convertToBase(int value, int base) throws IllegalArgumentException {
@@ -38,7 +38,7 @@ public class Base10Converter {
       int remainder = n % base;
       String remainderSymbol = this.convertToBaseSymbol(remainder);
       result = String.format("%s%s", remainderSymbol, result);
-      n = n / base;
+      n /= base; //int division automatically drops decimal, equivalent to floor
     }
     if (result.equals("")) {
      result = "0";
@@ -51,7 +51,7 @@ public class Base10Converter {
   }
 
   private String convertToBaseSymbol(int remainder) {
-    // 10-35 are represented by chars 'A'-'Z', which are ascii 65-90
+    // Values 10-35 are represented by chars 'A'-'Z', which are ascii 65-90.
     int charOffset = 55;
     String result;
     if (remainder >= 10) {
