@@ -24,6 +24,7 @@ class Base10ConverterTest {
       {Integer.MAX_VALUE, 8},
       {Integer.MAX_VALUE, 16},
       {Integer.MAX_VALUE, 36},
+      {Integer.MIN_VALUE + 1, 10},
       {1059254948, 36}
   };
 
@@ -42,6 +43,7 @@ class Base10ConverterTest {
       "17777777777",
       "7FFFFFFF",
       "ZIK0ZJ",
+      "-2147483647",
       "HINICK"
   };
 
@@ -57,5 +59,7 @@ class Base10ConverterTest {
     }
     System.out.println("Testing illegal base argument...");
     assertThrows(IllegalArgumentException.class, () -> converter.convertToBase(1, 37));
+    System.out.println("Testing illegal value argument (Integer.MIN_VALUE sneaking through)...");
+    assertThrows(IllegalArgumentException.class, () -> converter.convertToBase(Integer.MIN_VALUE, 16));
   }
 }

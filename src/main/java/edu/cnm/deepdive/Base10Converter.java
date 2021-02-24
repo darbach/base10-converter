@@ -29,7 +29,7 @@ public class Base10Converter {
    * @return A string in the specified base.
    */
   public String convertToBase(int value, int base) throws IllegalArgumentException {
-    if (base > 36 || base < 2) {
+    if (base > 36 || base < 2 || value == Integer.MIN_VALUE) {
       throw new IllegalArgumentException();
     }
     String result = "";
